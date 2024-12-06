@@ -1,0 +1,5 @@
+quarkus:
+  http:
+    port: 80
+  redis:
+    hosts: redis://20.207.71.172:6379
