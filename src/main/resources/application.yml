@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8081
+    port: 8181
     host: localhost
   
   redis:
