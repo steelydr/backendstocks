@@ -25,7 +25,7 @@ public class CompanyProfileApi {
     static {
         // Configure Redisson client
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6379");
+        config.useSingleServer().setAddress("redis://20.207.71.172:6379");
         redissonClient = Redisson.create(config);
 
         // Initialize the cache map

@@ -29,7 +29,7 @@ public class HistoricalStocksApi {
     static {
         Config config = new Config();
         config.useSingleServer()
-                .setAddress("redis://localhost:6379") // Update with your Redis host/port
+                .setAddress("redis://20.207.71.172:6379") // Update with your Redis host/port
                 .setConnectionPoolSize(10)
                 .setConnectionMinimumIdleSize(2);
         redissonClient = Redisson.create(config);
