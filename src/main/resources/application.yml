@@ -1,5 +1,31 @@
 quarkus:
   http:
     port: 80
+    host: localhost
+  
   redis:
     hosts: redis://20.207.71.172:6379
+  
+  log:
+    console:
+      enable: true
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
+      level: INFO
+      color: true
+    
+    file:
+      enable: true
+      path: "logs/application.log"
+      level: DEBUG
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
+      rotation:
+        max-file-size: "10M"
+        max-backup-index: 5
+    
+    category:
+      "org.hibernate":
+        level: DEBUG
+      "io.quarkus":
+        level: INFO
+      "stocks.backendstocks":
+        level: DEBUG
