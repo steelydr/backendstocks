@@ -4,31 +4,30 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 public class StockData {
-
     @JsonbProperty("symbol")
     private String symbol;
-
+    
     @JsonbProperty("name")
     private String name;
-
+    
     @JsonbProperty("price")
     private String price;
-
+    
     @JsonbProperty("change")
     private String change;
-
+    
     @JsonbProperty("changePercent")
     private String changePercent;
-
+    
     @JsonbProperty("volume")
     private String volume;
-
+    
     @JsonbProperty("avgVolume")
     private String avgVolume;
-
+    
     @JsonbProperty("marketCap")
     private String marketCap;
-
+    
     @JsonbProperty("peRatio")
     private String peRatio;
 
@@ -89,16 +88,20 @@ public class StockData {
 
     @Override
     public String toString() {
-        return "StockData{" +
-                "symbol='" + symbol + '\'' +
-                ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", change='" + change + '\'' +
-                ", changePercent='" + changePercent + '\'' +
-                ", volume='" + volume + '\'' +
-                ", avgVolume='" + avgVolume + '\'' +
-                ", marketCap='" + marketCap + '\'' +
-                ", peRatio='" + peRatio + '\'' +
-                '}';
+        return String.format(
+            "{" +
+            "\"symbol\": \"%s\"," +
+            "\"name\": \"%s\"," +
+            "\"price\": \"%s\"," +
+            "\"change\": \"%s\"," +
+            "\"changePercent\": \"%s\"," +
+            "\"volume\": \"%s\"," +
+            "\"avgVolume\": \"%s\"," +
+            "\"marketCap\": \"%s\"," +
+            "\"peRatio\": \"%s\"" +
+            "}",
+            symbol, name, price, change, changePercent, 
+            volume, avgVolume, marketCap, peRatio
+        );
     }
 }

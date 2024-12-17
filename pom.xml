@@ -15,7 +15,6 @@
         <quarkus.platform.version>3.16.4</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
-        <quarkus.package.type>uber-jar</quarkus.package.type>
     </properties>
 
     <repositories>
@@ -101,16 +100,35 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-redis-client</artifactId>
         </dependency>
+        <!-- Consolidated WebSocket dependencies -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-websockets</artifactId>
+        </dependency>
+        <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-scheduler</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-smallrye-graphql</artifactId>
+    </dependency>
+    <dependency>
+    <groupId>org.eclipse.microprofile.graphql</groupId>
+    <artifactId>microprofile-graphql-api</artifactId>
+    <version>2.0</version>
+</dependency>
+
+<dependency>
+    <groupId>javax.inject</groupId>
+    <artifactId>javax.inject</artifactId>
+</dependency>
+
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
-        <plugin>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>azure-webapp-maven-plugin</artifactId>
-  <version>2.13.0</version>
-</plugin>
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
@@ -126,25 +144,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>io.quarkus.runner.GeneratedMain</mainClass>
-                        </manifest>
-                        <manifestEntries>
-                            <Built-By>Quarkus</Built-By>
-                            <Implementation-Title>${project.artifactId}</Implementation-Title>
-                            <Implementation-Version>${project.version}</Implementation-Version>
-                            <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

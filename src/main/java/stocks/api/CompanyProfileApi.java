@@ -23,12 +23,10 @@ public class CompanyProfileApi {
     private static final RMapCache<String, CompanyProfile> cache;
 
     static {
-        // Configure Redisson client
         Config config = new Config();
         config.useSingleServer().setAddress("redis://localhost:6379");
         redissonClient = Redisson.create(config);
 
-        // Initialize the cache map
         cache = redissonClient.getMapCache("companyProfiles");
     }
 
@@ -63,7 +61,7 @@ public class CompanyProfileApi {
                 AzureBlobStorageWithSAS.uploadCompanyProfile(symbol, updatedProfile);
 
                 // Overwrite in Redis cache
-                cache.put(cacheKey, updatedProfile, 1, TimeUnit.DAYS);
+                cache.put(cacheKey, updatedProfile, 28, TimeUnit.DAYS);
 
                 profile = updatedProfile;
             }
@@ -76,7 +74,7 @@ public class CompanyProfileApi {
         }
 
         // Cache the profile in Redis with the updated key format for 1 day
-        cache.put(cacheKey, profile, 1, TimeUnit.DAYS);
+        cache.put(cacheKey, profile, 28, TimeUnit.DAYS);
 
         return profile;
     }
