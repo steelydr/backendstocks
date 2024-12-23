@@ -1,43 +1,29 @@
 package stocks.models;
 
-import jakarta.json.bind.annotation.JsonbCreator;
-import jakarta.json.bind.annotation.JsonbProperty;
+import org.eclipse.microprofile.graphql.Type;
 
+@Type
 public class HistoricalStockData {
-    @JsonbProperty("date")
     private String date;
-    
-    @JsonbProperty("open")
     private String open;
-    
-    @JsonbProperty("high")
     private String high;
-    
-    @JsonbProperty("low")
     private String low;
-    
-    @JsonbProperty("close")
     private String close;
-    
-    @JsonbProperty("adjClose")
     private String adjClose;
-    
-    @JsonbProperty("volume")
     private String volume;
 
-    // Default no-args constructor required for JSON-B
+    // Default no-args constructor required for serialization/deserialization
     public HistoricalStockData() {
     }
 
-    @JsonbCreator
     public HistoricalStockData(
-        @JsonbProperty("date") String date,
-        @JsonbProperty("open") String open,
-        @JsonbProperty("high") String high,
-        @JsonbProperty("low") String low,
-        @JsonbProperty("close") String close,
-        @JsonbProperty("adjClose") String adjClose,
-        @JsonbProperty("volume") String volume
+        String date,
+        String open,
+        String high,
+        String low,
+        String close,
+        String adjClose,
+        String volume
     ) {
         this.date = date;
         this.open = open;
@@ -48,7 +34,6 @@ public class HistoricalStockData {
         this.volume = volume;
     }
 
-    // Getters and setters
     public String getDate() { return date; }
     public void setDate(String date) { this.date = date; }
 
